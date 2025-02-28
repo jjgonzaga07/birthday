@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="icon" type="image" href="kitty.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffd1dc;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .kitty {
+            width: 100px;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .question-buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .no-btn {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="hbd.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="container">
+        <div id="page1" class="page active">
+            <h1>HI BABY!</h1>
+            <button class="btn btn-primary mt-3" onclick="nextPage('page2')">Next</button>
+        </div>
+        <div id="page2" class="page">
+            <h1>I really love your name even though u always rant about it na it was not that good but I really love it!</h1>
+            <button class="btn btn-primary mt-3" onclick="nextPage('page3')">Next</button>
+        </div>
+        <div id="page3" class="page">
+            <h1>DO YOU THINK I LOVE YOU MORE THAN YOU LOVE ME?</h1>
+            <div class="question-buttons">
+                <button class="btn btn-success" onclick="nextPage('page4')">YES</button>
+                <button class="btn btn-danger no-btn" id="no-btn" onclick="moveNoButton()">NO</button>
+            </div>
+        </div>
+        <div id="page4" class="page">
+            <div class="card text-center p-4">
+                <img src="kitty.png" class="kitty" alt="Hello Kitty">
+                <h1>Happy 21st Birthday, My Baby! 🎂💖</h1>
+                <button class="btn btn-success mt-3" onclick="showMessage()">Open Message</button>
+                <p class="hidden-message mt-3" id="hiddenMessage" style="display: none;">
+                    Happy 21st Birthday my wifey! I'm so happy right now na we're celebrating this special day of yours like baby i always told you na celebrating this kind of special day with you is just my dream before but now here I am thank you lord :)) i'm thanking lord because he let me love you the way I always tell him before, it's funny na naging palapray ako nung time na depress ako about us HAHAHAHAHA I always pray about us that day, i'm so tired of crying kasi ihh kaya kahit i'm not a person na paladasal, I still did it because I want you or should I say I need you my baby because you're the reason why araw araw me masigla sa bawat gagawin ko :))) anyway enough of talking about me or us, let's talk about you baby so I know gabi mo na mababasa to but still yeah so today is your day so please i'm saying sorry in advance with the way I chose my gift for you baby also the way i prepare them ueueue u know how tiring my sched naman right so i really didn't have a time to prepare all of this but i still tried my best baby. I asked mama to help me prepare this baby but sobra na antok niya kagabi ueueue she just suggest na ilagay yung shoes sa box ng vans HAHAHAHA she laugh nga and said na baka tawanan mo ko kasi yung box ng shoes is vans tas iba yung shoes ueueue tas ayon babyyy wala na raw kami wrapper so i bought this bag nalang baka kasi nauumay na ikaw sa palagi q binibigay na paper bag ba yon HAHAHAHA basta yon baby alsooo i'll tell here all my secrets na hindi q sinabi sayo ngayon. i messaged nova baby, i asked her if okay lang na dumaan me sakanila kasi i'm gonna buy a cake and it needs to be chill since baka masira yon kapag hindi agad nairef theeeeeen gulat me nag-volunteer siya na siya nalang raw sa cake HAHAHAHA nahiya me baby pero ayon para daw may ambag or meron rin siyang bigay so nag-volunteer siya for it. worried me kasi diba nanghiram pa siya money sayo tas siya pa bibili T^T lakas amats HAHAHAHA pero ayon baby di na me nagpumilit kasi baka mairita lang siya ueueue then baby about this letter, i'm sorry dahil hindi to handwritten and i made this in a webpage. bawi me next time babyyy! susunod nakabillboard na pangbirthday mo malakaito hehe ayon lang baby HAPPY BIRTHDAY MY BABYYYY! DI NA IKAW MAKAKATAKAS SAKIN, YOU'LL CELEBRATE YOUR BIRTHDAY EVERY YEAR WITH ME NA 😙😙 MAHAL KITA PALAGIIIII MAHAL NA MAHAL OKAAAAY? ILL LET U WIN THIS DAY BUT ILL ALWAYS LOVE YOU MORE MY BABYYY!! I LOVE YOU SO MUCH ALWAYSS! HAPPY BIRTHDAY MWAMWAMWAAAA 😙
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function nextPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+        function showMessage() {
+            document.getElementById('hiddenMessage').style.display = 'block';
+        }
+        function moveNoButton() {
+            let noBtn = document.getElementById('no-btn');
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 100);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
